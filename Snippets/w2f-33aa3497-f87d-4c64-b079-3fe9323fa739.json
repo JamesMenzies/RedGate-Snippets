@@ -1,0 +1,6 @@
+{
+  "id": "33aa3497-f87d-4c64-b079-3fe9323fa739",
+  "prefix": "w2f",
+  "description": "Filterable sp_who2 Query",
+  "body": "CREATE TABLE #sp_who2 ( SPID INT, Status VARCHAR(255), Login VARCHAR(255), HostName VARCHAR(255), BlkBy VARCHAR(255), DBName VARCHAR(255), Command VARCHAR(255), CPUTime INT, DiskIO INT, LastBatch VARCHAR(255), ProgramName VARCHAR(255), SPID2 INT, REQUESTID INT )\r\nINSERT INTO #sp_who2 EXEC sys.sp_who2\r\nSELECT * FROM #sp_who2\r\n-- Add any filtering of the results here :\r\nWHERE     DBName   = '$DBNAME$'\r\n--    AND Login    = '$USER$'\r\n--    AND HostName = '$MACHINE$'\r\n-- Add any sorting of the results here :\r\nORDER BY    DBName ASC\r\n \r\nDROP TABLE #sp_who2"
+}

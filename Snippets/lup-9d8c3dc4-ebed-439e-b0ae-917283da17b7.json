@@ -1,0 +1,6 @@
+{
+  "id": "9d8c3dc4-ebed-439e-b0ae-917283da17b7",
+  "prefix": "lup",
+  "description": "Look Up Sql Text By Spid",
+  "body": "DECLARE @sqltext VARBINARY(128)\r\nSELECT @sqltext = sql_handle\r\nFROM sys.sysprocesses\r\nWHERE spid = ($CURSOR$)\r\nSELECT TEXT\r\nFROM sys.dm_exec_sql_text(@sqltext)"
+}
